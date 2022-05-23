@@ -11,8 +11,12 @@ let getController = async (req, res) => {
     catch (e) {
         console.log(e);
     }
+}
 
+let getCRUD = (req, res) => {
+    return res.render('CRUD.ejs');
 }
 module.exports = {
     getController: getController,
+    getCRUD: getCRUD,
 }
