@@ -16,7 +16,12 @@ let getController = async (req, res) => {
 let getCRUD = (req, res) => {
     return res.render('CRUD.ejs');
 }
+let postCRUD = (req, res) => {
+    console.log(req.body);
+    return res.send('post CRUD');
+}
 module.exports = {
     getController: getController,
     getCRUD: getCRUD,
+    postCRUD: postCRUD,
 }
