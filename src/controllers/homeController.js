@@ -1,5 +1,7 @@
 import { json } from "express/lib/response";
 import db from "../models/index";
+import CRUDService from "../services/CRUDService";
+
 
 let getController = async (req, res) => {
     try {
@@ -16,9 +18,11 @@ let getController = async (req, res) => {
 let getCRUD = (req, res) => {
     return res.render('CRUD.ejs');
 }
-let postCRUD = (req, res) => {
+let postCRUD = async (req, res) => {
     console.log(req.body);
-    return res.send('post CRUD');
+    await CRUDService.createNewUser(req.body);
+
+    return res.send("post success");
 }
 module.exports = {
     getController: getController,
