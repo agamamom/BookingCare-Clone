@@ -34,18 +34,26 @@ let getEditCRUD = async (req, res) => {
     let userId = req.query.id;
     if (userId) {
         let userData = await CRUDService.getUserInfoById(userId);
-        return res.render("editCRUD.ejs");
+        return res.render("editCRUD.ejs", {
+            user: userData,
+        });
     }
     else {
-        return res.send("hello")
+        return res.send("Users not found!")
     }
-
 }
-
+let putCRUD = async (res, req) => {
+    let data = req.body;
+    let allUser = await CRUDService.updateUserData(data);
+    return res.render('displayCRUD.ejs', {
+        dataTable: allUser,
+    });
+}
 module.exports = {
     getController: getController,
     getCRUD: getCRUD,
     postCRUD: postCRUD,
     displayGetCRUD: displayGetCRUD,
     getEditCRUD: getEditCRUD,
+    putCRUD: putCRUD,
 }
