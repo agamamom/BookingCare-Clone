@@ -70,7 +70,7 @@ let updateUserData = (data) => {
         try {
             let user = await db.User.findOne({
                 where: { id: data.id }
-            })
+            });
             if (user) {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
@@ -85,7 +85,7 @@ let updateUserData = (data) => {
                 resolve();
             }
         } catch (e) {
-            reject(e);
+            console.log(e);
         }
     })
 
